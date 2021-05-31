@@ -7,21 +7,22 @@ class ProductDetailScreen extends StatelessWidget {
 
   // final double price;
 
-  static const routeName = '/product-detail';
+  static const String routeName = '/product-detail';
 
-  ProductDetailScreen();
+  const ProductDetailScreen();
 
   @override
   Widget build(BuildContext context) {
-    final productId = (ModalRoute.of(context)!.settings.arguments as String);
-    final loadedProduct = Provider.of<Products>(
+    final String? productId =
+        ModalRoute.of(context)!.settings.arguments as String?;
+    final Products loadedProduct = Provider.of<Products>(
       context,
       listen: false,
     );
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('title'),
+        title: const Text('title'),
       ),
     );
   }

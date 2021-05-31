@@ -5,7 +5,7 @@ import 'package:flutter_shopping_app/screens/products_overview.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx) => Products(),
+    return ChangeNotifierProvider<Products>(
+      create: (BuildContext ctx) => Products(),
       child: MaterialApp(
         title: 'MyShop',
         theme: ThemeData(
@@ -23,8 +23,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Lato',
         ),
         home: ProductsOverviewScreen(),
-        routes: {
-          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+        routes: <String, Widget Function(BuildContext)>{
+          ProductDetailScreen.routeName: (BuildContext ctx) =>
+              const ProductDetailScreen(),
         },
       ),
     );

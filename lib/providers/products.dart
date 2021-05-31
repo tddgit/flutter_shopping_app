@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shopping_app/providers/product.dart';
 
-import 'product.dart';
-
+// ignore: prefer_mixin
 class Products with ChangeNotifier {
-  List<Product> _items = [
+  final List<Product> _items = <Product>[
     Product(
       id: 'p1',
       title: 'Red Shirt',
@@ -18,7 +18,8 @@ class Products with ChangeNotifier {
       description: 'A nice pair of trousers.',
       price: 59.99,
       imageUrl:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%' +
+              '2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
     ),
     Product(
       id: 'p3',
@@ -38,13 +39,13 @@ class Products with ChangeNotifier {
     ),
   ];
 
-  var showFavoritesOnly = false;
+  bool showFavoritesOnly = false;
 
   List<Product> get items {
     if (showFavoritesOnly) {
-      _items.where((prodItem) => prodItem.isFavourite).toList();
+      _items.where((Product prodItem) => prodItem.isFavourite).toList();
     }
-    return [..._items];
+    return <Product>[..._items];
   }
 
   void addProduct() {
@@ -53,7 +54,8 @@ class Products with ChangeNotifier {
   }
 
   Product findById(String id) {
-    Product item = _items.firstWhere((element) => element.id == id);
+    final Product item =
+        _items.firstWhere((Product element) => element.id == id);
     return item;
   }
 }
