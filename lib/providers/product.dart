@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: prefer_mixin
 class Product with ChangeNotifier {
   final String id;
   final String title;

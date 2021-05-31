@@ -12,24 +12,22 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider<Products>(
-      create: (BuildContext ctx) => Products(),
-      child: MaterialApp(
-        title: 'MyShop',
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.deepOrange,
-          fontFamily: 'Lato',
+  Widget build(BuildContext context) => ChangeNotifierProvider<Products>(
+        create: (BuildContext ctx) => Products(),
+        child: MaterialApp(
+          title: 'MyShop',
+          theme: ThemeData(
+            primarySwatch: Colors.purple,
+            accentColor: Colors.deepOrange,
+            fontFamily: 'Lato',
+          ),
+          home: ProductsOverviewScreen(),
+          routes: <String, Widget Function(BuildContext)>{
+            ProductDetailScreen.routeName: (BuildContext ctx) =>
+                const ProductDetailScreen(),
+          },
         ),
-        home: ProductsOverviewScreen(),
-        routes: <String, Widget Function(BuildContext)>{
-          ProductDetailScreen.routeName: (BuildContext ctx) =>
-              const ProductDetailScreen(),
-        },
-      ),
-    );
-  }
+      );
 }
 
 // class MyHomePage extends StatelessWidget {
